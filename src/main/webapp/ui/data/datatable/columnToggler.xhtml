@@ -24,13 +24,24 @@
     <ui:param name="documentationLink" value="/components/datatable" />
 
     <ui:define name="implementation">
-        
+    <h:form>
+        <h:commandLink>
+            <h:outputLabel>Excel</h:outputLabel>
+            <p:dataExporter type="xlsx" target="cars" fileName="cars" />
+        </h:commandLink>
+        <h:commandLink>
+            <h:outputLabel>ExCella Reports</h:outputLabel>
+            <p:dataExporter type="xls" target="cars" fileName="cars" exporter="#{excellaExporter.dataTableExporter}" />
+        </h:commandLink>
+
         <p:dataTable id="cars" var="car" value="#{dtBasicView.cars}">
             <f:facet name="header">
                 List of Cars
 
                 <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="pi pi-align-justify" />
-                <p:columnToggler datasource="cars" trigger="toggler" />
+                <p:columnToggler datasource="cars" trigger="toggler">
+                    <p:ajax event="toggle" />
+                </p:columnToggler>
             </f:facet>
             
             <p:column headerText="Id">
@@ -55,7 +66,7 @@
                 </h:outputText>
             </p:column>
         </p:dataTable>
-        
+    </h:form>
     </ui:define>
 
 </ui:composition>

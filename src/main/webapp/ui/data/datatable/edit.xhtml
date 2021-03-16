@@ -25,6 +25,15 @@
     <ui:define name="implementation">
 
          <h:form id="form">
+            <h:commandLink>
+                <h:outputLabel>Excel</h:outputLabel>
+                <p:dataExporter type="xlsx" target="cars1" fileName="cars" />
+            </h:commandLink>
+            <h:commandLink>
+                <h:outputLabel>ExCella Reports</h:outputLabel>
+                <p:dataExporter type="xls" target="cars1" fileName="cars" exporter="#{excellaExporter.dataTableExporter}" />
+            </h:commandLink>
+
             <p:growl id="msgs" showDetail="true"/>
 
             <p:dataTable id="cars1" var="car" value="#{dtEditView.cars1}" editable="true" style="margin-bottom:20px">
@@ -75,6 +84,15 @@
                     <p:rowEditor />
                 </p:column>
             </p:dataTable>
+
+            <h:commandLink>
+                <h:outputLabel>Excel</h:outputLabel>
+                <p:dataExporter type="xlsx" target="cars2" fileName="cars" />
+            </h:commandLink>
+            <h:commandLink>
+                <h:outputLabel>ExCella Reports</h:outputLabel>
+                <p:dataExporter type="xls" target="cars2" fileName="cars" exporter="#{excellaExporter.dataTableExporter}" />
+            </h:commandLink>
 
             <p:dataTable id="cars2" var="car" value="#{dtEditView.cars2}" editable="true" editMode="cell" widgetVar="cellCars">
                 <f:facet name="header">

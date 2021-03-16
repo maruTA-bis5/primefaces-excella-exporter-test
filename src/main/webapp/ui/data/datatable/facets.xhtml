@@ -17,7 +17,17 @@
     <ui:param name="documentationLink" value="/components/datatable" />
 
     <ui:define name="implementation">
-        <p:dataTable var="car" value="#{dtBasicView.cars}">
+    <h:form>
+        <h:commandLink>
+            <h:outputLabel>Excel</h:outputLabel>
+            <p:dataExporter type="xlsx" target="tbl" fileName="cars" />
+        </h:commandLink>
+        <h:commandLink>
+            <h:outputLabel>ExCella Reports</h:outputLabel>
+            <p:dataExporter type="xls" target="tbl" fileName="cars" exporter="#{excellaExporter.dataTableExporter}" />
+        </h:commandLink>
+
+        <p:dataTable id="tbl" var="car" value="#{dtBasicView.cars}">
             <f:facet name="header">
                 List of Cars
             </f:facet>
@@ -42,6 +52,7 @@
                 In total there are #{fn:length(dtBasicView.cars)} cars.
             </f:facet>
         </p:dataTable>
+    </h:form>
     </ui:define>
 
 </ui:composition>

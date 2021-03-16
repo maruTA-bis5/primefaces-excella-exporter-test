@@ -48,7 +48,16 @@
     <ui:define name="implementation">
 
         <h:form>
-            <p:dataTable var="car" value="#{dtFilterView.cars1}" widgetVar="carsTable1"
+        <h:commandLink>
+            <h:outputLabel>Excel</h:outputLabel>
+            <p:dataExporter type="xlsx" target="tbl" fileName="cars" />
+        </h:commandLink>
+        <h:commandLink>
+            <h:outputLabel>ExCella Reports</h:outputLabel>
+            <p:dataExporter type="xls" target="tbl" fileName="cars" exporter="#{excellaExporter.dataTableExporter}" />
+        </h:commandLink>
+
+            <p:dataTable id="tbl" var="car" value="#{dtFilterView.cars1}" widgetVar="carsTable1"
                          emptyMessage="No cars found with given criteria" filteredValue="#{dtFilterView.filteredCars1}">
 
                 <f:facet name="header">

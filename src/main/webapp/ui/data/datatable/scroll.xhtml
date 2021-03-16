@@ -35,7 +35,15 @@
 
         <h:form>
             <h3 style="margin-top:0">Vertical</h3>
-            <p:dataTable var="car" value="#{dtScrollView.cars1}" scrollable="true" scrollHeight="150">
+            <h:commandLink>
+                <h:outputLabel>Excel</h:outputLabel>
+                <p:dataExporter type="xlsx" target="cars1" fileName="cars" />
+            </h:commandLink>
+            <h:commandLink>
+                <h:outputLabel>ExCella Reports</h:outputLabel>
+                <p:dataExporter type="xls" target="cars1" fileName="cars" exporter="#{excellaExporter.dataTableExporter}" />
+            </h:commandLink>
+            <p:dataTable id="cars1" var="car" value="#{dtScrollView.cars1}" scrollable="true" scrollHeight="150">
                 <p:column headerText="Id" footerText="Id">
                     <h:outputText value="#{car.id}" />
                 </p:column>
@@ -51,7 +59,15 @@
             </p:dataTable>
 
             <h3>Horizontal</h3>
-            <p:dataTable var="car" value="#{dtScrollView.cars2}" scrollable="true" scrollWidth="400">
+            <h:commandLink>
+                <h:outputLabel>Excel</h:outputLabel>
+                <p:dataExporter type="xlsx" target="cars2" fileName="cars" />
+            </h:commandLink>
+            <h:commandLink>
+                <h:outputLabel>ExCella Reports</h:outputLabel>
+                <p:dataExporter type="xls" target="cars2" fileName="cars" exporter="#{excellaExporter.dataTableExporter}" />
+            </h:commandLink>
+            <p:dataTable id="cars2" var="car" value="#{dtScrollView.cars2}" scrollable="true" scrollWidth="400">
                 <p:column headerText="Id" footerText="Id">
                     <h:outputText value="#{car.id}" />
                 </p:column>

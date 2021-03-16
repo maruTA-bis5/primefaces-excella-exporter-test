@@ -18,7 +18,16 @@
     <ui:define name="implementation">
 
         <h:form>
-            <p:dataTable var="team" value="#{dtSubTableView.teams}">
+            <h:commandLink>
+                <h:outputLabel>Excel</h:outputLabel>
+                <p:dataExporter type="xlsx" target="tbl" fileName="teams" />
+            </h:commandLink>
+            <h:commandLink>
+                <h:outputLabel>ExCella Reports</h:outputLabel>
+                <p:dataExporter type="xls" target="tbl" fileName="teams" exporter="#{excellaExporter.dataTableExporter}" />
+            </h:commandLink>
+
+            <p:dataTable id="tbl" var="team" value="#{dtSubTableView.teams}">
                 <f:facet name="header">
                     NBA Teams
                 </f:facet>

@@ -18,7 +18,16 @@
     <ui:define name="implementation">
         
         <h:form>
-            <p:dataTable var="car" value="#{dtSummaryRowView.cars}" sortBy="#{car.brand}">
+            <h:commandLink>
+                <h:outputLabel>Excel</h:outputLabel>
+                <p:dataExporter type="xlsx" target="tbl" fileName="cars" />
+            </h:commandLink>
+            <h:commandLink>
+                <h:outputLabel>ExCella Reports</h:outputLabel>
+                <p:dataExporter type="xls" target="tbl" fileName="cars" exporter="#{excellaExporter.dataTableExporter}" />
+            </h:commandLink>
+
+            <p:dataTable id="tbl" var="car" value="#{dtSummaryRowView.cars}" sortBy="#{car.brand}">
                 <p:column headerText="Id" sortBy="#{car.id}">
                     <h:outputText value="#{car.id}" />
                 </p:column>

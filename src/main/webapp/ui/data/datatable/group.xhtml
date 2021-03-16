@@ -18,8 +18,17 @@
     <ui:define name="implementation">
         
         <h:form>
-            
-            <p:dataTable var="sale" value="#{dtGroupView.sales}">
+
+        <h:commandLink>
+            <h:outputLabel>Excel</h:outputLabel>
+            <p:dataExporter type="xlsx" target="tbl" fileName="sales" />
+        </h:commandLink>
+        <h:commandLink>
+            <h:outputLabel>ExCella Reports</h:outputLabel>
+            <p:dataExporter type="xls" target="tbl" fileName="sales" exporter="#{excellaExporter.dataTableExporter}" />
+        </h:commandLink>
+
+            <p:dataTable id="tbl" var="sale" value="#{dtGroupView.sales}">
                 <f:facet name="header">
                     Sales/Profits of Manufacturers
                 </f:facet>

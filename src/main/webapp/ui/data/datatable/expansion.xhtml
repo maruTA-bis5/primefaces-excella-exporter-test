@@ -26,7 +26,15 @@
     <ui:define name="implementation">
 
         <h:form>
-            <p:dataTable var="car" value="#{dtBasicView.cars}">
+            <h:commandLink>
+                <h:outputLabel>Excel</h:outputLabel>
+                <p:dataExporter type="xlsx" target="tbl" fileName="cars" />
+            </h:commandLink>
+            <h:commandLink>
+                <h:outputLabel>ExCella Reports</h:outputLabel>
+                <p:dataExporter type="xls" target="tbl" fileName="cars" exporter="#{excellaExporter.dataTableExporter}" />
+            </h:commandLink>
+            <p:dataTable id="tbl" var="car" value="#{dtBasicView.cars}">
                 <f:facet name="header">
                     Expand rows to see detailed information
                 </f:facet>

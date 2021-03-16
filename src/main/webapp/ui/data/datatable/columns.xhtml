@@ -20,6 +20,15 @@
         Available columns are "id","brand","year","color" and "price".
         
         <h:form id="form">    
+            <h:commandLink>
+                <h:outputLabel>Excel</h:outputLabel>
+                <p:dataExporter type="xlsx" target="cars" fileName="cars" />
+            </h:commandLink>
+            <h:commandLink>
+                <h:outputLabel>ExCella Reports</h:outputLabel>
+                <p:dataExporter type="xls" target="cars" fileName="cars" exporter="#{excellaExporter.dataTableExporter}" />
+            </h:commandLink>
+
             <h:panelGrid columns="3" style="margin:10px 0">
                 <p:outputLabel for="template" value="Template:" style="font-weight:bold"/>
                 <p:inputText id="template" value="#{dtColumnsView.columnTemplate}" size="50"/>

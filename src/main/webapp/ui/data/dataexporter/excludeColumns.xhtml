@@ -73,6 +73,11 @@
                 <p:graphicImage name="/demo/images/xml.png" />
                 <p:dataExporter type="xml" target="tbl" fileName="cars" />
             </h:commandLink>
+
+            <h:commandLink>
+                <h:outputLabel>ExCella Reports</h:outputLabel>
+                <p:dataExporter type="xls" target="tbl" fileName="cars" exporter="#{excellaExporter.dataTableExporter}" />
+            </h:commandLink>
         </h:form>
         
     </ui:define>
